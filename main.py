@@ -1,7 +1,13 @@
-def getFilePaths():
-	with open("backupPath.txt") as paths:
-		for item in paths:
-			print(item)
-		paths.close
+def getBackupPaths():
+	pathList = []
 
-getFilePaths()
+	with open("backupPath.txt") as paths:
+		for line in paths:
+			pathList.append(line.strip())
+		paths.close()
+
+	return pathList;
+
+
+paths = getBackupPaths();
+print(paths)
