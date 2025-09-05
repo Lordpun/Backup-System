@@ -8,6 +8,19 @@ def getBackupPaths():
 
 	return pathList;
 
+def getBackupLocation():
+	locationPath = ""
 
-paths = getBackupPaths();
-print(paths)
+	with open("savePaths.txt") as location:
+		locationPath = location.readLine().strip();
+	location.close()
+
+	if locationPath == "":
+		return "Error! Empty path!"
+
+	return locationPath
+
+def addBackupPath(path):
+	with open("backupPath.txt", "a") as paths:
+		paths.write(path)
+	paths.close()
