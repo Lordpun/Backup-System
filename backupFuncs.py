@@ -1,3 +1,7 @@
+import os
+
+# Paths file functions
+
 def getBackupPaths():
 	pathList = []
 
@@ -7,18 +11,6 @@ def getBackupPaths():
 		paths.close()
 
 	return pathList;
-
-def getBackupLocation():
-	locationPath = ""
-
-	with open("savePaths.txt", "r") as location:
-		locationPath = location.readLine().strip();
-	location.close()
-
-	if locationPath == "":
-		return "\033[31mError\033[0m: Empty path!, please run the initalize option first."
-
-	return locationPath
 
 def addBackupPath(path):
 	# Checking to see the file exists
@@ -53,3 +45,22 @@ def removeBackupPath(path):
 		for item in pathsText:
 			paths.write(item)
 	paths.close()
+
+# Backup location functions
+
+def getBackupLocation():
+	locationPath = ""
+
+	with open("savePaths.txt", "r") as location:
+		locationPath = location.readLine().strip();
+	location.close()
+
+	if locationPath == "":
+		return "\033[31mError\033[0m: Empty path!, please run the initalize option first."
+
+	return locationPath
+
+def setBackupLocation(path):
+	with open("savePaths.txt", "w") as path:
+		path.write(path)
+	path.close()
