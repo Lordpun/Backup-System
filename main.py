@@ -11,18 +11,43 @@ def getBackupPaths():
 def getBackupLocation():
 	locationPath = ""
 
-	with open("savePaths.txt") as location:
+	with open("savePaths.txt", "r") as location:
 		locationPath = location.readLine().strip();
 	location.close()
 
 	if locationPath == "":
-		return "Error! Empty path!"
+		return "\033[31mError\033[0m: Empty path!, please run the initalize option first."
 
 	return locationPath
 
 def addBackupPath(path):
 	with open("backupPath.txt", "a") as paths:
 		paths.write(path)
+	paths.close()
+
+def removeBackupPath(path):
+	# There was probably a much simpler way to remove a line, but oh well.
+
+	# Turning text into an array
+	with open("backupPath.txt", "r") as paths:
+		pathsText = paths.readLines()
+	paths.close()
+
+	# Finding the path and removing it
+	for item in pathsList:
+		if item.strip() == path:
+			pathIndex = pathsText.index(item)
+			pathsText.pop(pathIndex)
+
+	# wiping the paths file
+	with open("backupPath.txt", "w") as paths:
+		pass
+	paths.close();
+
+	# Rewriting the content
+	with open("backupPath.txt", "a") as paths:
+		for item in pathsText:
+			paths.write(item)
 	paths.close()
 
 def consoleMenuStart():
@@ -37,6 +62,7 @@ def consoleMenuStart():
 		"4": "backup"
 	}
 
+	# Option input loop
 	while True:
 		userInput = str(input()).lower()
 
@@ -57,6 +83,7 @@ def consoleMenuStart():
 				case "backup":
 					return "Option: backup"
 				case _:
-					print("\033[31mError! We reached a case we shouldn't have reached.\033[0m")
+					# It's not a good program if there's no error message making fun of you.
+					print("\033[31mError\033[0m: Uh oh, that case shouldn\'t have been reached at all, what did you even do?.\nThis may sound a bit rude, but you may be an idiot if you managed to get here without modifiying the code.")
 			
 inputVal = consoleMenuStart()
