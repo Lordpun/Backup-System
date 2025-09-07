@@ -62,6 +62,6 @@ def getBackupLocation():
 	return locationPath
 
 def setBackupLocation(path):
-	with open("savePaths.txt", "w") as path:
-		path.write(path)
-	path.close()
+	with open("savePaths.txt", "w") as pathSave:
+		pathSave.write(path)
+	pathSave.close()
