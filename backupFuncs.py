@@ -51,12 +51,13 @@ def removeBackupPath(path):
 def getBackupLocation():
 	locationPath = ""
 
+	fileSize = os.path.getsize("savePaths.txt");
+	if fileSize == 0:
+		return "\033[31mError\033[0m: Empty path!, please run the initalize option first."
+
 	with open("savePaths.txt", "r") as location:
 		locationPath = location.readline().strip();
 	location.close()
-
-	if locationPath == "":
-		return "\033[31mError\033[0m: Empty path!, please run the initalize option first."
 
 	return locationPath
 
