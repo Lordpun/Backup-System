@@ -26,7 +26,7 @@ def removeBackupPath(path):
 
 	# Turning text into an array
 	with open("backupPath.txt", "r") as paths:
-		pathsText = paths.readLines()
+		pathsText = paths.readlines()
 	paths.close()
 
 	# Finding the path and removing it
@@ -52,7 +52,7 @@ def getBackupLocation():
 	locationPath = ""
 
 	with open("savePaths.txt", "r") as location:
-		locationPath = location.readLine().strip();
+		locationPath = location.readline().strip();
 	location.close()
 
 	if locationPath == "":
