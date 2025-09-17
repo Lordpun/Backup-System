@@ -7,16 +7,22 @@ def clearConsole(waitVal=0):
 	# Should work on both Linux and Windows
 	os.system('cls' if os.name == 'nt' else 'clear')
 
+def exitToMenu():
+	print("\033[35mExiting to main menu\033[0m")
+	clearConsole(0.75)
+	consoleMenuStart();
+
 def consoleMenuStart():
 	print("\033[34mBACKUPS\n\033[0m")
 
-	print("Choose an option\n\033[90m1] Initalize backup system\n2] Add a path to backup\n3] Remove a path\n4] Manual backup\n\033[0m")
+	print("Choose an option\n\033[90m1] Initalize backup system\n2] Add a path to backup\n3] Remove a path\n4] Manual backup\n5] Exit\n\033[0m")
 
 	options = {
 		"1": "init",
 		"2": "add",
 		"3": "remove",
-		"4": "backup"
+		"4": "backup",
+		"5": "quit"
 	}
 
 	# Option input loop
@@ -37,6 +43,8 @@ def consoleMenuStart():
 					return "remove"
 				case "backup":
 					return "backup"
+				case "quit":
+					return "quit"
 				case _:
 					# It's not a good program if there's no error message making fun of you.
 					print("\033[31mError\033[0m: Uh oh, that case shouldn\'t have been reached at all!\nThis may sound a bit rude, but you may be an idiot if you managed to get here without modifiying the code.")
@@ -72,11 +80,21 @@ def setupLocation():
 				break
 	setupLocation2(path)
 	
+def addSavePaths():
+	path = input("Enter a path you wish to backup (exit to quit):\n")
+
+	if path.lower() == "exit":
+		exitToMenu()
+		return;
 
 inputVal = consoleMenuStart()
 
-clearConsole(0.25);
+clearConsole(0.25)
 
 match inputVal:
 	case "init":
 		setupLocation()
+	case "add":
+		addSavePaths()
+	case "exit":
+		pass
