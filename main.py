@@ -1,5 +1,11 @@
 import backupFuncs
 import os
+import time
+
+def clearConsole(waitVal=0):
+	time.sleep(waitVal)
+	# Should work on both Linux and Windows
+	os.system('cls' if os.name == 'nt' else 'clear')
 
 def consoleMenuStart():
 	print("\033[34mBACKUPS\n\033[0m")
@@ -35,7 +41,10 @@ def consoleMenuStart():
 					# It's not a good program if there's no error message making fun of you.
 					print("\033[31mError\033[0m: Uh oh, that case shouldn\'t have been reached at all!\nThis may sound a bit rude, but you may be an idiot if you managed to get here without modifiying the code.")
 			
-inputVal = consoleMenuStart()
+# Made to get around the break statement in the inner for loop exiting to the main for loop rather than both loops
+def setupLocation2(path):
+	backupFuncs.setBackupLocation(path)
+	clearConsole(1);
 
 def setupLocation():
 	path = ""
@@ -57,11 +66,16 @@ def setupLocation():
 					print(f"\033[31mError\033[0m: {path} isn't valid")
 				else:
 					print(f"\033[35mMade the path {path})\033[0m")
-					break
+					setupLocation2(path)
+					return
 			else:
 				break
+	setupLocation2(path)
+	
 
-	backupFuncs.setBackupLocation(path)
+inputVal = consoleMenuStart()
+
+clearConsole(0.25);
 
 match inputVal:
 	case "init":
