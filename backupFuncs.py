@@ -14,10 +14,14 @@ def getBackupPaths():
 
 def addBackupPath(path):
 	# Checking to see the file exists
-	paths = open("backupPath.txt", "x")
-	paths.close()
+	try:
+		paths = open("backupPath.txt", "x")
+		paths.close()
+	except FileExistsError:
+		pass
 
 	with open("backupPath.txt", "a") as paths:
+		path += "\n"
 		paths.write(path)
 	paths.close()
 

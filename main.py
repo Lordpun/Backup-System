@@ -81,11 +81,17 @@ def setupLocation():
 	setupLocation2(path)
 	
 def addSavePaths():
-	path = input("Enter a path you wish to backup (exit to quit):\n")
+	while True:
+		path = input("Enter a path you wish to backup (exit to quit):\n")
 
-	if path.lower() == "exit":
-		exitToMenu()
-		return;
+		if path.lower() == "exit":
+			exitToMenu()
+			return;
+
+		if not os.path.isdir(path):
+			print("\033[35mThis path doesn't exist.\033[0m")
+		else:
+			backupFuncs.addBackupPath(path)
 
 inputVal = consoleMenuStart()
 
