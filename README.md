@@ -1,7 +1,7 @@
-# Tauri + React
+What this should do:
+Allow the user to select file paths to copy
+Copy the selected files into the backup folder in the place of the users choice
 
-This template should help get you started developing with Tauri and React in Vite.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+Optional for now:
+Run automatically
+Run automatically at a user given interval
