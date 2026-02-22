@@ -1,9 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import UtilityButton from "./components/utiltiyButton";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+  	<header>
+  		<h1>Backup System</h1>
+  	</header>
+
+  	<main>
+  		<UtilityButton text="Set Files"/>
+  		<UtilityButton text="Make a backup"/>
+  	</main>
   </React.StrictMode>,
 );

@@ -1,6 +1,6 @@
-What this should do:
-Allow the user to select file paths to copy
-Copy the selected files into the backup folder in the place of the users choice
+What this app should do:
+Allow the user to select files to backup
+Copy the selected files into a backup folder in the place of the users choice
 
 Optional for now:
 Run automatically
