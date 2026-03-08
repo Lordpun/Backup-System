@@ -7,7 +7,7 @@ function Popup({ pageTitle, mainBody}) {
 
 		<div className="popup">
 			<header>
-				<h2>{ pageTitle }</h2>
+				<h2>{pageTitle}</h2>
 			</header>
 
 			<main>
