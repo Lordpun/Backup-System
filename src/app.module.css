@@ -3,16 +3,3 @@ header {
 	background-color: #fff;
 	padding: 0.1rem 0;
 }
-
-button {
-	background-color: #9fcbe0;
-	color: #fff;
-}
-
-button:hover {
-	background-color: #8097c4;
-}
-
-button:active {
-	background-color: #c0e0f0;
-}

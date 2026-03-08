@@ -2,7 +2,7 @@ import styles from './utilityButton.module.css';
 
 function UtilityButton({ text, onClick }) {
 	return (
-		<button onClick={onClick}>
+		<button className={styles.utility} onClick={onClick}>
 			{text} 
 		</button>
 	)

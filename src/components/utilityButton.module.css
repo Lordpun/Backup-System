@@ -1,12 +1,21 @@
-button {
+.utility {
 	display: block;
 	border: none;
 	border-radius: 10px;
-	background-color: #fff;
+	background-color: #9fcbe0;
+	color: #fff;
 	padding: 1rem 3rem;
 	margin: 3rem auto;
 	width: 50%;
 	max-width: 25rem;
 	font-size: 1rem;
 	cursor: pointer;
+}
+
+.utility:hover {
+	background-color: #8097c4;
+}
+
+.utility:active {
+	background-color: #c0e0f0;
 }
