@@ -1,8 +1,15 @@
 import { useState } from "react";
 import UtilityButton from "./components/utilityButton";
+import Popup from "./components/popup";
 import styles from './app.module.css';
 
 function App() {
+	const [showFiles, setShowFiles] = useState(false);
+  const [showBackup, setShowBackup] = useState(false);
+
+	const closeFiles = () => setShowFiles(false);
+	const closeBackups = () => setShowFiles(false);
+
 	return(
 		<div>
 			<header>
@@ -10,9 +17,12 @@ function App() {
 			</header>
 
 			<main>
-				<UtilityButton text="Set Files"/>
-				<UtilityButton text="Make a backup"/>
+				<UtilityButton text="Set Files" onClick={() => setShowFiles(true)}/>
+				<UtilityButton text="Make a backup" onClick={() => setShowBackup(true)}/>
 			</main>
+
+			{/*{showFiles && (<Popup pageTitle="Set Files"/>), onclose={closeFiles}/>}*/}
+			{/*{showBackup && (<Popup pageTitle="Backing Up"/>), onclose={closeBackups}/>}*/}
 		</div>
 	);
 }

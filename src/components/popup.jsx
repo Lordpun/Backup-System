@@ -1,7 +1,7 @@
 import styles from './popup.module.css';
-import UtilityButton from "./components/utiltiyButton";
+import UtilityButton from "./utilityButton";
 
-function Popup({ pageTitle, mainBody}) {
+function Popup({ pageTitle, mainBody, close }) {
 	return(
 		<div className="background">
 
@@ -15,8 +15,8 @@ function Popup({ pageTitle, mainBody}) {
 					{mainBody}
 				</section>
 
-				<UtilityButton text="Close" />
-			</main
+				<UtilityButton text="Close" onClick={close}/>
+			</main>
 		</div>
 
 		</div>
