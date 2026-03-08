@@ -22,3 +22,5 @@ function Popup({ pageTitle, mainBody}) {
 		</div>
 	)
 }
+
+export default Popup;
