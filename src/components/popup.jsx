@@ -15,7 +15,7 @@ function Popup({ pageTitle, mainBody, close }) {
 					{mainBody}
 				</section>
 
-				<UtilityButton text="Close" onClick={close}/>
+				<UtilityButton className={styles.closeButton} text="Close" onClick={close}/>
 			</main>
 		</div>
 
