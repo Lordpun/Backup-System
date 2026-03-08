@@ -9,7 +9,7 @@ function App() {
   const [showBackup, setShowBackup] = useState(false);
 
 	const closeFiles = () => setShowFiles(false);
-	const closeBackups = () => setShowFiles(false);
+	const closeBackups = () => setShowBackup(false);
 
 	return(<>
 		<header>

@@ -3,9 +3,9 @@ import UtilityButton from "./utilityButton";
 
 function Popup({ pageTitle, mainBody, close }) {
 	return(
-		<div className="background">
+		<div className={styles.background}>
 
-		<div className="popup">
+		<div className={styles.popup}>
 			<header>
 				<h2>{pageTitle}</h2>
 			</header>

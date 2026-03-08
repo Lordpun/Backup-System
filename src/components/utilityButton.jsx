@@ -1,8 +1,8 @@
 import styles from './utilityButton.module.css';
 
-function UtilityButton({ text }) {
+function UtilityButton({ text, onClick }) {
 	return (
-		<button>
+		<button onClick={onClick}>
 			{text} 
 		</button>
 	)
