@@ -17,7 +17,9 @@ pub fn run() {
     .invoke_handler(tauri::generate_handler![
     	add_path,
     	remove_path,
-    	send_paths
+    	send_paths,
+    	backup_file,
+    	backup_folder
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
