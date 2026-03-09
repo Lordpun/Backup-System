@@ -6,7 +6,9 @@ pub static PATH_LIST: LazyLock<Mutex<Vec<PathBuf>>> = LazyLock::new(|| {
 });
 
 mod paths;
+mod backup;
 use paths::{add_path, remove_path, send_paths};
+use backup::{backup_file, backup_folder};
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
