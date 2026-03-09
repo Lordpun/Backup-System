@@ -2,13 +2,13 @@ use std::path::PathBuf;
 use crate::PATH_LIST;
 
 #[tauri::command]
-pub fn add_path(path_string: String) {
+pub fn add_path(path_string: String) -> () {
 	let mut path_list = PATH_LIST.lock().unwrap();
 	path_list.push(PathBuf::from(path_string));
 }
 
 #[tauri::command]
-pub fn remove_path(path_string: String) {
+pub fn remove_path(path_string: String) -> () {
 	let mut path_list = PATH_LIST.lock().unwrap();
 	let target = PathBuf::from(path_string);
 	path_list.retain(|p| p != &target)
