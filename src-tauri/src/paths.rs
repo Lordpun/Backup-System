@@ -4,6 +4,9 @@ use crate::PATH_LIST;
 #[tauri::command]
 pub fn add_path(path_string: String) -> () {
 	let mut path_list = PATH_LIST.lock().unwrap();
+	if path_list.contains(&PathBuf::from(&path_string)) {
+		return;
+	}
 	path_list.push(PathBuf::from(path_string));
 }
 
