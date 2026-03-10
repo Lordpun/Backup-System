@@ -1,8 +1,31 @@
+.path {
+	display: flex;
+	border: 1px solid #ccc;
+	border-radius: 0.5rem;
+	padding: 0.5rem 1rem;
+	margin: 0.25rem 2rem;
+}
+
 .path button {
-	display: inline;
+	flex-grow: 1;
+	max-width: 5rem;
+	border: 1px solid #ccc;
+	border-radius: 0.5rem;
+	background-color: #e3e3e3;
+	cursor: pointer;
+}
+
+.path button:hover {
+	background-color: #ccc;
+}
+
+.path button:active {
+	background-color: #ededed;
 }
 
 .path p {
 	margin-left: 0.5rem;
-	display: inline;
+	flex-grow: 10;
+	text-align: left;
+	padding-left: 1rem;
 }

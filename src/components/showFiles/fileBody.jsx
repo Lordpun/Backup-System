@@ -4,10 +4,13 @@ import styles from "./fileBody.module.css";
 import PathItem from "./pathItem";
 
 function fileBody() {
+	const [backupPath, setBackup] = useState([])
 	const [paths, setPaths] = useState([]);
 
 	const updateList = async () => {
+		const backupPath = await invoke("send_backup");
 		const pathList = await invoke("send_paths");
+		setBackup(backupPath);
 		setPaths(paths);
 	}
 
@@ -19,7 +22,9 @@ function fileBody() {
 		<section className={styles.store}>
 			<h4>Backup Location</h4>
 			<p>Recommended to chose something on an external drive</p>
-			<PathItem filePath="/home/user/backups"/>
+			{ backupPath != "" && (<PathItem filePath={backupPath}/>)}
+			{ backupPath == "" && (<PathItem filePath="None"/>)}
+
 		</section>
 
 		<section className={styles.backups}>

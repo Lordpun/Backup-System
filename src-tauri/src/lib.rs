@@ -12,7 +12,7 @@ pub static BACKUP_PATH: LazyLock<Mutex<String>> = LazyLock::new(|| {
 mod paths;
 mod backup;
 mod config;
-use paths::{add_path, remove_path, send_paths};
+use paths::{add_path, remove_path, send_paths, send_backup};
 use backup::{backup_file, backup_folder};
 use config::update_config;
 
@@ -24,6 +24,7 @@ pub fn run() {
     	add_path,
     	remove_path,
     	send_paths,
+    	send_backup,
     	backup_file,
     	backup_folder,
     	update_config

@@ -1,5 +1,5 @@
 use std::path::PathBuf;
-use crate::PATH_LIST;
+use crate::{PATH_LIST, BACKUP_PATH};
 
 #[tauri::command]
 pub fn add_path(path_string: String) -> () {
@@ -26,4 +26,10 @@ pub fn send_paths() -> Vec<String> {
 	  .iter()
 	  .map(|path| path.to_string_lossy().into_owned())
 	  .collect()
+}
+
+// For frontend to get the backup path
+#[tauri::command]
+pub fn send_backup() -> String {
+	BACKUP_PATH.lock().unwrap().clone()
 }
