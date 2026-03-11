@@ -2,5 +2,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-  backup_system_lib::run()
+    backup_system_lib::run()
 }

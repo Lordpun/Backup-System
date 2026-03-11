@@ -1,9 +1,10 @@
 import { invoke } from "@tauri-apps/api/core";
 import styles from "./pathItem.module.css";
 
-function pathItem({ filePath }) {
+function pathItem({ filePath, update }) {
 	const removeFile = async () => {
-		await invoke("remove_file", { filePath });
+		await invoke("remove_file", { path_string: filePath });
+		await update();
 	}
 
 	return(
