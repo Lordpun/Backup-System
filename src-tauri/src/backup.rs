@@ -8,22 +8,22 @@ use std::fs;
 
 #[tauri::command]
 pub fn backup_file(file: String) -> Result<(), String> {
-    let backup_path = BACKUP_PATH.lock().unwrap();
-    fs::copy(file, &*backup_path)
-        .map(|_| ())
-        .map_err(|e| e.to_string())
+  let backup_path = BACKUP_PATH.lock().unwrap();
+  fs::copy(file, &*backup_path)
+    .map(|_| ())
+    .map_err(|e| e.to_string())
 }
 
 #[tauri::command]
 pub fn backup_folder(folder: String) -> Result<(), String> {
-    let backup_path = BACKUP_PATH.lock().unwrap();
+  let backup_path = BACKUP_PATH.lock().unwrap();
 
-    let mut options = CopyOptions::new();
-    options.overwrite = true;
+  let mut options = CopyOptions::new();
+  options.overwrite = true;
 
-    let folder_items = vec![folder];
+  let folder_items = vec![folder];
 
-    copy_items(&folder_items, &*backup_path, &options)
-        .map(|_| ())
-        .map_err(|e| e.to_string())
+  copy_items(&folder_items, &*backup_path, &options)
+    .map(|_| ())
+    .map_err(|e| e.to_string())
 }
