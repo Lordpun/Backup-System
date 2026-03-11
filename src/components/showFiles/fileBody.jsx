@@ -61,9 +61,12 @@ function fileBody() {
 		<section className={styles.backups}>
 			<h4>Files to backup</h4>
 
-			{paths.map((path) => (
-			  <PathItem key={path} filePath={path} update={updateList}/>
-			))}
+			{ paths.length == 0 && <p>No paths added</p>}
+			{paths.length > 0 && 
+			  paths.map((path) => (
+			    <PathItem key={path} filePath={path} update={updateList} />
+			  ))
+			}
 
 			<section className={styles.addPath}>
 				<h4>Add path</h4>
