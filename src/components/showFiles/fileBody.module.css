@@ -9,3 +9,13 @@ section {
 .store p {
 	font-size: 0.8rem;
 }
+
+.addPath select {
+	width: 5rem;
+	cursor: pointer;
+}
+
+.addPath button {
+	width: 10rem;
+	cursor: pointer;
+}

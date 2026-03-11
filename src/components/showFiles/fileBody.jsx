@@ -1,3 +1,4 @@
+import { open } from '@tauri-apps/plugin-dialog';
 import { invoke } from "@tauri-apps/api/core";
 import { useState, useEffect } from "react";
 import styles from "./fileBody.module.css";
@@ -11,20 +12,21 @@ function fileBody() {
 		setSelectedValue(event.target.value);
 	}
 
-	const handleSelectFile = async (file) => {
+	const handleSelectFile = async () => {
+		let dir;
 		if (selectedValue == "folder") dir = true;
 		if (selectedValue == "file") dir = false;
     try {
       const selected = await open({
         multiple: false,
-        directory: selectedValue,
+        directory: dir,
       });
 
       if (selected === null) {
         return;
       } else {
-        await invoke("add_path", file)
-        updateList();
+        await invoke("add_path", {pathString: selected} )
+        await updateList();
       }
     } catch (err) {
       console.error(err);
@@ -57,9 +59,9 @@ function fileBody() {
 		<section className={styles.backups}>
 			<h4>Files to backup</h4>
 
-			{paths.map((path) => {
-				<PathItem key={path} filePath={path} update={updateList}/>
-			})}
+			{paths.map((path) => (
+			  <PathItem key={path} filePath={path} update={updateList}/>
+			))}
 
 			<section className={styles.addPath}>
 				<h4>Add path</h4>
@@ -70,7 +72,7 @@ function fileBody() {
 					<option value="File">File</option>
 				</select>
 				
-				<button onClick={() => handleSelectFile(file)}>Add path</button>
+				<button onClick={handleSelectFile}>Add path</button>
 			</section>
 		</section>	
 	</>);

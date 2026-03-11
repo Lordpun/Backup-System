@@ -3,7 +3,7 @@ import styles from "./pathItem.module.css";
 
 function pathItem({ filePath, update }) {
 	const removeFile = async () => {
-		await invoke("remove_file", { path_string: filePath });
+		await invoke("remove_path", { pathString: filePath });
 		await update();
 	}
 
