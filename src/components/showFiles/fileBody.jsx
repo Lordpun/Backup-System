@@ -50,8 +50,10 @@ function fileBody() {
 
 	return(<>
 		<section className={styles.store}>
-			<h4>Backup Location</h4>
-			<p>Recommended to chose something on an external drive</p>
+			<section className={styles.storeTitle}>
+				<h4>Backup Location</h4>
+				<p>Recommended to chose something on an external drive</p>
+			</section>
 			{ backupPath != "" && (<BackupItem filePath={backupPath} update={updateList}/>)}
 			{ backupPath == "" && (<BackupItem filePath="None" update={updateList}/>)}
 		</section>

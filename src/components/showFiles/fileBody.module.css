@@ -2,11 +2,11 @@ section {
 	text-align: center;
 }
 
-.store {
+.storeTitle {
 	line-height: 0.5rem;
 }
 
-.store p {
+.storeTitle p {
 	font-size: 0.8rem;
 }
 
