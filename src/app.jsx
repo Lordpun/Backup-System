@@ -2,6 +2,7 @@ import { useState } from "react";
 import UtilityButton from "./components/utilityButton";
 import Popup from "./components/popup";
 import FileBody from "./components/showFiles/fileBody";
+import BackupBody from "./components/backup/backupBody";
 import styles from './app.module.css';
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
 		</main>
 
 		{showFiles && (<Popup pageTitle="Set Files" mainBody={<FileBody />} close={closeFiles}/>)}
-		{/*{showBackup && (<Popup pageTitle="Backing Up" close={closeBackups}/>)}*/}
+		{showBackup && (<Popup pageTitle="Backup Files" mainBody={<BackupBody />} close={closeBackups}/>)}
 	</>);
 }
 

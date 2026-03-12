@@ -10,7 +10,7 @@ mod config;
 mod paths;
 use backup::{backup_file, backup_folder};
 use config::{update_config, load_config};
-use paths::{add_path, remove_path, send_backup, send_paths, set_backup};
+use paths::{add_path, remove_path, send_backup, send_paths, set_backup, check_folder};
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -25,6 +25,7 @@ pub fn run() {
       set_backup,
       send_paths,
       send_backup,
+      check_folder,
       backup_file,
       backup_folder,
       update_config

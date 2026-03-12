@@ -1,5 +1,6 @@
-use crate::{BACKUP_PATH, PATH_LIST};
+use std::fs;
 use std::path::PathBuf;
+use crate::{BACKUP_PATH, PATH_LIST};
 
 #[tauri::command]
 pub fn add_path(path_string: String) -> () {
@@ -38,4 +39,13 @@ pub fn send_paths() -> Vec<String> {
 #[tauri::command]
 pub fn send_backup() -> String {
   BACKUP_PATH.lock().unwrap().clone()
+}
+
+
+#[tauri::command]
+pub fn check_folder(path_string: String) -> bool {
+	match fs::metadata(path_string) {
+		Ok(metadata) => metadata.is_dir(),
+		Err(_) => false,
+	}
 }
