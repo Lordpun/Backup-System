@@ -36,21 +36,27 @@ function backupBody() {
     getPaths();
   }, []);
 
-	const backupPaths = async () => {	
-		if (backupPath == "" || backupPath == "No backup path selected.\nPlease select one in order to backup files.") return;
+	const [total, setTotal] = useState(0);
+	const [completed, setCompleted] = useState(0);
+	const [percentText, setPercentText] = useState("0% Completed");
 
-		try {
-			const folderResults = await Promise.all(
-				foldersList.map(path => invoke("backup_folder", { folder: path }))
-			)
-
-			const fileResults = await Promise.all(
-				filesList.map(path => invoke("backup_file", { file: path }))
-			)
-		} catch (err) {
-			console.error("Backup Failed", err);
-		}
+	const backupFiles = async (fileArray, functionName) => {
+		for (const path of fileArray) {
+	    await invoke(functionName, { pathString: path });
+	    setCompleted(completed + 1);
+	    setPercentText(`${(completed / total) * 100}% Completed`);
+		}		
 	}
+
+	const backupPaths = async () => {	
+		showProgress(true);
+		setTotal(pathList.length);
+
+		await backupFiles(foldersList, "backup_folder");
+		await backupFiles(filesList, "backup_file");
+	}
+
+	const [progressVisible, showProgress] = useState(false);
 
 	return(<>
 		<section>
@@ -61,6 +67,9 @@ function backupBody() {
 		</section>
 
 		<UtilityButton text="Backup Files" onClick={backupPaths}/>
+
+		{ progressVisible && <ProgressBar pageTitle="Backing Up..." text={percentText} closeable={false} close={() => showProgress(false)}/>}
+		{ progressVisible && <ProgressBar pageTitle="Backup Done!" text="" closeable={true} close={() => showProgress(false)}/>}
 	</>);
 }
 

@@ -8,7 +8,7 @@ function progressBar({ pageTitle, text, closeable, close }) {
 		<div className={styles.popup}>
 			<h4>{pageTitle}</h4>
 			<p>{text}</p>
-			{closeable && (<UtilityButton onClick={close}>Close</UtilityButton>)}
+			{closeable && (<UtilityButton text="Close" onClick={close}/>)}
 		</div>
 
 		</div>
