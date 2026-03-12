@@ -1,10 +1,10 @@
 import { invoke } from "@tauri-apps/api/core";
 import { useState, useEffect } from "react";
 import UtilityButton from "../utilityButton";
-import styles from './backupBody.module.css';
+import ProgressBar from "./progressBar";
 
 function backupBody() {	
-	const [backupPath, setBackupPath] = useState("None");
+	const [backupPath, setBackupPath] = useState("");
 
 	const getBackupLocation = async () => {
 		const storedBackupPath = await invoke("send_backup");
@@ -36,8 +36,20 @@ function backupBody() {
     getPaths();
   }, []);
 
-	const backupPaths = async () => {
+	const backupPaths = async () => {	
+		if (backupPath == "" || backupPath == "No backup path selected.\nPlease select one in order to backup files.") return;
 
+		try {
+			const folderResults = await Promise.all(
+				foldersList.map(path => invoke("backup_folder", { folder: path }))
+			)
+
+			const fileResults = await Promise.all(
+				filesList.map(path => invoke("backup_file", { file: path }))
+			)
+		} catch (err) {
+			console.error("Backup Failed", err);
+		}
 	}
 
 	return(<>
