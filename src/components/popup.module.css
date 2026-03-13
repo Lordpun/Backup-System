@@ -23,3 +23,12 @@
 	overflow-y: auto;
 	border-radius: 1rem;
 }
+
+header {
+	background-color: #fff;
+	padding: 0.1rem 0;
+}
+
+header h2 {
+	text-align: center;
+}
